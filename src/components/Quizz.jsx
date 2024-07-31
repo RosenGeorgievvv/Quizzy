@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
+import { resultInitialState } from '../data';
 
 const Quizz = ({questions}) => {
 
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [answerIndex, setAnswerIndex] = useState(null);
     const [choice, setChoice] = useState(null);
+    const [result, setResult] = useState(resultInitialState);
 
     const {question, choices, correctAnswer} = questions[currentQuestion];
 
@@ -15,6 +17,10 @@ const Quizz = ({questions}) => {
         }else{
             setChoice(false);
         }
+    }
+
+    const onClickNext = () =>{
+        setAnswerIndex(null);
     }
 
   return (
@@ -33,7 +39,7 @@ const Quizz = ({questions}) => {
             }
         </ul>
         <div className='footer'>
-            <button>
+            <button onClick={onClickNext} disabled={answerIndex == null}>
                 {currentQuestion === questions.length - 1 ? "Finish" : "Next"}
             </button>
         </div>

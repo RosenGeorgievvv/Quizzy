@@ -1,12 +1,13 @@
 import './App.css'
 import Quizz from './components/Quizz'
+import { reactQuizz } from './data'
 
 function App() {
 
 
   return (
     <>
-    <Quizz />
+    <Quizz questions={reactQuizz.questions} />
     </>
   )
 }

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { resultInitialState } from "../data";
+import Timer from "./Timer";
 
 const Quizz = ({ questions }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -47,6 +48,7 @@ const Quizz = ({ questions }) => {
     <div className="quiz-container">
       {!showResult ? (
         <>
+        <Timer />
           <span className="active-question-no">{currentQuestion + 1}</span>
           <span className="total-question">/{questions.length}</span>
           <h2>{question}</h2>

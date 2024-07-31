@@ -40,7 +40,8 @@ const Quizz = ({ questions }) => {
 
   return (
     <div className="quiz-container">
-      <>
+        {!showResult ? (
+        <>
         <span className="active-question-no">{currentQuestion + 1}</span>
         <span className="total-question">/{questions.length}</span>
         <h2>{question}</h2>
@@ -61,6 +62,15 @@ const Quizz = ({ questions }) => {
           </button>
         </div>
       </>
+      ) : (
+      <div className="result">
+        <h3>Result</h3>
+        <p>
+            Total Questions: <span>{questions.length}</span>
+        </p>
+        </div>
+        )}
+      
     </div>
   );
 };

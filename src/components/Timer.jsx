@@ -20,9 +20,7 @@ function Timer({ duration, onTimeUp }) {
 
     if (counter === duration) {
       clearInterval(intervalRef.current);
-      setTimeout(() => {
-        onTimeUp();
-      }, 1000);
+      onTimeUp();
     }
   }, [counter]);
 

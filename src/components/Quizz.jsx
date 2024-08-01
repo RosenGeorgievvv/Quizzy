@@ -15,11 +15,7 @@ const Quizz = ({ questions }) => {
 
   const onAnswerClick = (choice, index) => {
     setAnswerIndex(index);
-    if (choice === correctAnswer) {
-      setChoice(true);
-    } else {
-      setChoice(false);
-    }
+    setChoice(choice === correctAnswer);
   };
 
   const onClickNext = (finalAnswer) => {
@@ -36,19 +32,17 @@ const Quizz = ({ questions }) => {
     );
     if (currentQuestion !== questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
+      setTimeout(() => setShowAnswerTimer(true), 0); // Delay to reset timer
     } else {
-      setCurrentQuestion(0);
       setShowResult(true);
     }
-
-    setTimeout(() =>{
-      setShowAnswerTimer(true);
-    })
   };
 
   const onTryAgain = () => {
     setResult(resultInitialState);
     setShowResult(false);
+    setCurrentQuestion(0);
+    setShowAnswerTimer(true);
   };
 
   const handleTimeUp = () => {
@@ -58,9 +52,11 @@ const Quizz = ({ questions }) => {
 
   return (
     <div className="quiz-container">
+      {!showResult && showAnswerTimer && (
+        <Timer duration={10} onTimeUp={handleTimeUp} />
+      )}
       {!showResult ? (
         <>
-          {showAnswerTimer && <Timer duration={10} onTimeUp={handleTimeUp} />}
           <span className="active-question-no">{currentQuestion + 1}</span>
           <span className="total-question">/{questions.length}</span>
           <h2>{question}</h2>

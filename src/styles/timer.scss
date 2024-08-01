@@ -1,20 +1,20 @@
 .quiz-container {
-    max-width: 600px;
+    max-width: 400px;
     margin: 0 auto;
     padding: 20px;
     background: #f9f9f9;
-    border-radius: 20px; // Ensuring the quiz container has a border-radius
+    border-radius: 20px; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: relative;
   
     .timer-container {
       position: absolute;
-      top: 0px; // Adjust as needed
+      top: 0px;
       left: 0;
       width: 100%;
-      height: 10px; // Adjust height as needed
-      border-radius: 20px 20px 0 0; // Match the top border-radius of the quiz container
-      overflow: hidden; // Ensure the progress bar is clipped to the rounded corners
+      height: 20px;
+      border-radius: 20px 20px 0 0;
+      overflow: hidden;
   
       .progress {
         height: 100%;

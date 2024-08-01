@@ -1,5 +1,5 @@
 import "../styles/quiz.scss";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { resultInitialState } from "../data";
 import Timer from "./Timer";
 
@@ -32,7 +32,6 @@ const Quizz = ({ questions }) => {
     );
     if (currentQuestion !== questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
-      setTimeout(() => setShowAnswerTimer(true), 0); // Delay to reset timer
     } else {
       setShowResult(true);
     }
@@ -50,10 +49,15 @@ const Quizz = ({ questions }) => {
     onClickNext(false);
   };
 
+  // Effect to handle resetting the timer
+  useEffect(() => {
+    setShowAnswerTimer(true);
+  }, [currentQuestion]);
+
   return (
     <div className="quiz-container">
       {!showResult && showAnswerTimer && (
-        <Timer duration={10} onTimeUp={handleTimeUp} />
+        <Timer key={currentQuestion} duration={10} onTimeUp={handleTimeUp} />
       )}
       {!showResult ? (
         <>

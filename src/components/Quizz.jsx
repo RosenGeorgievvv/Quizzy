@@ -39,16 +39,16 @@ const Quizz = ({ questions }) => {
     }
   };
 
-  const onTryAgain = () =>{
+  const onTryAgain = () => {
     setResult(resultInitialState);
     setShowResult(false);
-  }
+  };
 
   return (
     <div className="quiz-container">
       {!showResult ? (
         <>
-        <Timer />
+          <Timer duration={10} />
           <span className="active-question-no">{currentQuestion + 1}</span>
           <span className="total-question">/{questions.length}</span>
           <h2>{question}</h2>

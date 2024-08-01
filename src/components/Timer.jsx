@@ -1,7 +1,7 @@
 import "../styles/timer.scss";
 import { useEffect, useState, useRef } from "react";
 
-function Timer({ duration }) {
+function Timer({ duration, onTimeUp }) {
   const [counter, setCounter] = useState(0);
   const [progress, setProgress] = useState(0);
   const intervalRef = useRef();
@@ -11,22 +11,34 @@ function Timer({ duration }) {
       setCounter((curr) => curr + 1);
     }, 1000);
 
-    //clear interval inside useEffect
+    // Clear interval when component unmounts
     return () => clearInterval(intervalRef.current);
   }, []);
 
   useEffect(() => {
-    setProgress(100 * (counter / duration));
+    setProgress((100 * counter) / duration);
 
-    if(counter === duration){
-        clearInterval(intervalRef.current)
+    if (counter === duration) {
+      clearInterval(intervalRef.current);
+      setTimeout(() => {
+        onTimeUp();
+      }, 1000);
     }
   }, [counter]);
 
   return (
     <div className="timer-container">
-      <div className="progress"></div>
+      <div
+        style={{
+          width: `${progress}%`,
+          backgroundColor: `${
+            progress < 40 ? "lightgreen" : progress < 70 ? "orange" : "red"
+          }`,
+        }}
+        className="progress"
+      ></div>
     </div>
   );
 }
+
 export default Timer;

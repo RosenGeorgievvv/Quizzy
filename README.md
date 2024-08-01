@@ -20,3 +20,7 @@ Quizzy is an interactive quiz application designed to challenge and enhance your
 Quizzy leverages the power of React for dynamic and responsive user interfaces, while Vite ensures fast and efficient build processes. Sass is used for styling, providing a flexible and maintainable way to manage the application's CSS.
 
 Whether you're a novice programmer looking to test your knowledge or an experienced developer wanting to stay sharp, Quizzy offers a fun and educational way to engage with programming challenges.
+
+
+
+https://quizzy-inky.vercel.app

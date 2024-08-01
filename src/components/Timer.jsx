@@ -17,6 +17,10 @@ function Timer({ duration }) {
 
   useEffect(() => {
     setProgress(100 * (counter / duration));
+
+    if(counter === duration){
+        clearInterval(intervalRef.current)
+    }
   }, [counter]);
 
   return (
